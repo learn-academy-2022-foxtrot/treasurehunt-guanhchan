@@ -19,7 +19,10 @@ const App = () => {
 
   const [bombLocation, setBombLocation] = useState(Math.floor(Math.random() * board.length))
 
+  const[count,setCount] = useState(5)
+
   const handleGamePlay = (clickSquare) => {
+  
     let updateBoard = [...board]
     if (clickSquare === treasureLocation) {
       updateBoard[clickSquare] = '🌙'
@@ -28,6 +31,8 @@ const App = () => {
       updateBoard[clickSquare] = '🚀'
       setBoard(updateBoard)
     } else {
+      console.log(count)
+      setCount(count - 1)
       updateBoard[clickSquare] = '🐕' // 🌙
       setBoard(updateBoard)
 
@@ -48,16 +53,18 @@ const App = () => {
       "?",
       "?"
     ])
+
     setTreasureLocation(Math.floor(Math.random() * board.length))
     setBombLocation(Math.floor(Math.random() * board.length))
   }
 
   console.log('Booty', treasureLocation)
   console.log('Rocket', bombLocation)
+
   return (
     <>
       <h1>Treasure Hunt Game 🐕 🚀 🌙</h1>
-      <div className="button">
+      <div className="button"> You have {count} tries 
          <button onClick={handleReset}>Play Again</button>
       </div>
       <div className="board-game">
