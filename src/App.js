@@ -35,11 +35,31 @@ const App = () => {
 
   }
 
+  const handleReset = () => {
+
+    setBoard([
+      "?",
+      "?",
+      "?",
+      "?",
+      "?",
+      "?",
+      "?",
+      "?",
+      "?"
+    ])
+    setTreasureLocation(Math.floor(Math.random() * board.length))
+    setBombLocation(Math.floor(Math.random() * board.length))
+  }
+
   console.log('Booty', treasureLocation)
   console.log('Rocket', bombLocation)
   return (
     <>
       <h1>Treasure Hunt Game 🐕 🚀 🌙</h1>
+      <div className="button">
+         <button onClick={handleReset}>Play Again</button>
+      </div>
       <div className="board-game">
         {board.map((square, index) => {
           return <Square
@@ -51,6 +71,7 @@ const App = () => {
         })}
 
       </div>
+     
     </>
   )
 }
