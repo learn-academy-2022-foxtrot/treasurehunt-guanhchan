@@ -16,13 +16,14 @@ const App = () => {
   ])
 
   const handleGamePlay = (clickSquare) => {
-    alert(clickSquare)
-
+    let updateBoard = [...board]
+    updateBoard[clickSquare] = '🐕' // 🌙
+    setBoard(updateBoard)
   }
 
   return (
     <>
-      <h1>Treasure Hunt Game</h1>
+      <h1>Treasure Hunt Game 🐕 🚀 🌙</h1>
       <div className="board-game">
         {board.map((square, index) => {
           return <Square
