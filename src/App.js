@@ -15,12 +15,28 @@ const App = () => {
     "?"
   ])
 
+  const [treasureLocation, setTreasureLocation] = useState(Math.floor(Math.random() * board.length))
+
+  const [bombLocation, setBombLocation] = useState(Math.floor(Math.random() * board.length))
+
   const handleGamePlay = (clickSquare) => {
     let updateBoard = [...board]
-    updateBoard[clickSquare] = '🐕' // 🌙
-    setBoard(updateBoard)
+    if (clickSquare === treasureLocation) {
+      updateBoard[clickSquare] = '🌙'
+      setBoard(updateBoard)
+    } else if(clickSquare === bombLocation){
+      updateBoard[clickSquare] = '🚀'
+      setBoard(updateBoard)
+    } else {
+      updateBoard[clickSquare] = '🐕' // 🌙
+      setBoard(updateBoard)
+
+    }
+
   }
 
+  console.log('Booty', treasureLocation)
+  console.log('Rocket', bombLocation)
   return (
     <>
       <h1>Treasure Hunt Game 🐕 🚀 🌙</h1>
